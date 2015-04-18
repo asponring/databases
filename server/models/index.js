@@ -17,15 +17,15 @@ module.exports = {
         res.send(resultsObj);
       });
     }, // a function which produces all the messages
-    post: function () {
+    put: function (req, res) {
       var newConnection = db.connectToDB();
       newConnection.connect();
-      newConnection.query("INSERT INTO messages VALUES " + "()", function(err, results){
+      newConnection.query("INSERT INTO messages VALUES " + "(5, 'testing4', 'test2')", function(err, results){
         if (err) {
           throw new Error(err.message);
         }
-        console.log(req.body);
         newConnection.end();
+        res.end();
       });
     } // a function which can be used to insert a message into the database
   },
@@ -33,7 +33,7 @@ module.exports = {
   users: {
     // Ditto as above.
     get: function () {},
-    post: function () {}
+    put: function () {}
   }
 };
 
