@@ -39,7 +39,8 @@ describe("Persistent Node Chat Server", function() {
               json: {
                 username: "Valjean",
                 message: "In mercy's name, three days is all I need.",
-                roomname: "Hello"
+                roomname: "Hello",
+                id:0
               }
       }, function () {
         // Now if we look in the database, we should find the

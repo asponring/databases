@@ -13,7 +13,6 @@ module.exports = {
         }
         var resultsObj = {"results": results};
         newConnection.end();
-        console.log(resultsObj);
         res.send(resultsObj);
       });
     }, // a function which produces all the messages
@@ -21,6 +20,7 @@ module.exports = {
       var newConnection = db.connectToDB();
       newConnection.connect();
       var reqBody = req.body;
+      console.log(reqBody);
       newConnection.query("INSERT INTO messages VALUES (" + reqBody.id + ", '" + reqBody.text + "', '" + reqBody.username + "')", function(err, results){
         if (err) {
           throw new Error(err.message);
@@ -33,8 +33,22 @@ module.exports = {
 
   users: {
     // Ditto as above.
-    get: function () {},
-    put: function () {}
+    get: function (req, res) {
+
+    },
+    put: function (req, res) {
+      var newConnection = db.connectToDB();
+      newConnection.connect();
+      var reqBody = req.body;
+      console.log(reqBody.username);
+      newConnection.query("INSERT INTO users VALUES ('" + reqBody.username + "')", function(err, results){
+        if (err) {
+          throw new Error(err.message);
+        }
+        newConnection.end();
+        res.end();
+      });
+    }
   }
 };
 

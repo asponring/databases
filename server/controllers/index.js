@@ -28,8 +28,14 @@ module.exports = {
   users: {
     // Ditto as above
     get: function (req, res) {},
-    put: function (req, res) {},
-    options: function (req, res) {}
+    put: function (req, res) {
+      res.set(headers);
+      models.messages.put(req, res)
+    },
+    options: function (req, res) {
+      res.set(headers);
+      res.end();
+    }
   }
 };
 
