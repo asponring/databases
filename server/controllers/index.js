@@ -30,7 +30,7 @@ module.exports = {
     get: function (req, res) {},
     put: function (req, res) {
       res.set(headers);
-      models.messages.put(req, res)
+      models.users.put(req, res)
     },
     options: function (req, res) {
       res.set(headers);

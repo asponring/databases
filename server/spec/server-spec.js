@@ -36,12 +36,12 @@ describe("Persistent Node Chat Server", function() {
       // Post a message to the node chat server:
       request({ method: "PUT",
               uri: "http://127.0.0.1:3000/classes/messages",
-              json: {
-                username: "Valjean",
-                message: "In mercy's name, three days is all I need.",
-                roomname: "Hello",
-                id:0
-              }
+                json: {
+                  username: "Valjean",
+                  text: "In mercy's name, three days is all I need.",
+                  roomname: "Hello",
+                  id:0
+                }
       }, function () {
         // Now if we look in the database, we should find the
         // posted message there.
