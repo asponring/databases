@@ -12,9 +12,9 @@ module.exports = {
           throw new Error(err.message);
         }
         var resultsObj = {"results": results};
+        newConnection.end();
         console.log(resultsObj);
         res.send(resultsObj);
-        newConnection.end();
       });
     }, // a function which produces all the messages
     post: function () {
