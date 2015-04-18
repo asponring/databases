@@ -45,7 +45,7 @@ var FormView = Backbone.View.extend({
     this.collection.create({
       username: window.location.search.substr(10),
       text: $text.val(),
-      objectId: this.collection.length
+      id: this.collection.length
     });
     $text.val('');
   },
@@ -64,7 +64,7 @@ var FormView = Backbone.View.extend({
 
 var MessageView = Backbone.View.extend({
 
-  template: _.template('<div class="chat" data-id="<%- objectId %>"> \
+  template: _.template('<div class="chat" data-id="<%- id %>"> \
                        <div class="user"><%- username %></div> \
                        <div class="text"><%- text %></div> \
                        </div>'),
@@ -88,10 +88,10 @@ var MessagesView = Backbone.View.extend({
   },
 
   renderMessage: function(message){
-    if( !this.onscreenMessages[message.get('objectId')] ){
+    if( !this.onscreenMessages[message.get('id')] ){
       var messageView = new MessageView({model: message});
       this.$el.prepend(messageView.render());
-      this.onscreenMessages[message.get('objectId')] = true;
+      this.onscreenMessages[message.get('id')] = true;
     }
   }
 

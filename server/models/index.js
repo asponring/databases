@@ -1,5 +1,4 @@
 var db = require('../db');
-var app = require('../app.js');
 
 
 
@@ -12,12 +11,23 @@ module.exports = {
         if (err) {
           throw new Error(err.message);
         }
-        console.log(results);
-        res.send(results);
+        var resultsObj = {"results": results};
+        console.log(resultsObj);
+        res.send(resultsObj);
         newConnection.end();
       });
     }, // a function which produces all the messages
-    post: function () {} // a function which can be used to insert a message into the database
+    post: function () {
+      var newConnection = db.connectToDB();
+      newConnection.connect();
+      newConnection.query("INSERT INTO messages VALUES " + "()", function(err, results){
+        if (err) {
+          throw new Error(err.message);
+        }
+        console.log(req.body);
+        newConnection.end();
+      });
+    } // a function which can be used to insert a message into the database
   },
 
   users: {
