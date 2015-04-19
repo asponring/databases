@@ -20,7 +20,6 @@ module.exports = {
       var newConnection = db.connectToDB();
       newConnection.connect();
       var reqBody = req.body;
-      console.log(reqBody);
       newConnection.query("INSERT INTO messages VALUES (" + newConnection.escape(reqBody.id) + ", " + newConnection.escape(reqBody.text) + ", " + newConnection.escape(reqBody.username) + ")", function(err, results){
         if (err) {
           throw new Error(err.message);
